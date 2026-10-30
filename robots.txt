@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://solea-cafe.example.com/sitemap.xml
