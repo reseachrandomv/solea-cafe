@@ -6,8 +6,12 @@ const $=s=>document.querySelector(s),cart={};
 const toast=m=>{const t=document.createElement('div');t.className='toast';t.textContent=m;document.body.append(t);setTimeout(()=>t.remove(),2600)};
 // nav
 addEventListener('scroll',()=>$('#nav').classList.toggle('solid',scrollY>40));
-$('#burger').onclick=()=>$('#links').classList.toggle('open');
-document.querySelectorAll('#links a').forEach(a=>a.onclick=()=>$('#links').classList.remove('open'));
+const PAGES=[...document.querySelectorAll('.page')].map(p=>p.id);
+function route(){let id=(location.hash||'#home').slice(1);if(!PAGES.includes(id))id='home';
+document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id==id));
+document.querySelectorAll('#tabbar a').forEach(a=>{a.classList.toggle('on',a.dataset.tab==id);if(a.dataset.tab==id)a.scrollIntoView({inline:'center',block:'nearest'})});
+scrollTo(0,0)}
+addEventListener('hashchange',route);
 // petals
 const P=$('#petals');for(let i=0;i<28;i++){const p=document.createElement('i');p.className='petal';
 p.style.left=Math.random()*100+'%';p.style.setProperty('--dx',(Math.random()*200-100)+'px');
@@ -30,7 +34,7 @@ $('#orderForm').onsubmit=e=>{e.preventDefault();const f=new FormData(e.target),v
 const items=Object.keys(cart).filter(k=>cart[k].q).map(k=>`- ${cart[k].q} x ${k} (MVR ${cart[k].q*cart[k].p})`).join('\n');
 if(!items)return toast('Add something from the menu first');
 if(f.get('type')=='Delivery'&&!f.get('address'))return toast('Please add a delivery address');
-send(via,`SOLÉA ${f.get('type')} order request`,`${items}\nEstimated total: MVR ${tot}\n\nName: ${f.get('name')}\nPhone: ${f.get('phone')}\n${f.get('type')=='Delivery'?'Address: '+f.get('address')+'\n':''}Time: ${f.get('time')||'ASAP'}\nNotes: ${f.get('notes')||'-'}\nPayment: on ${f.get('type').toLowerCase()}`)};
+send(via,`SOLÉA ${f.get('type')} order request`,`${items}\nEstimated total: MVR ${tot}\n\nName: ${f.get('name')}\nPhone: ${f.get('phone')}\n${f.get('type')=='Delivery'?'Address: '+f.get('address')+'\n':''}Time: ${f.get('time')||'ASAP'}\nNotes: ${f.get('notes')||'-'}\nPay method: ${f.get('pay')}\n(Pay at pickup/delivery or by transfer after you confirm)`)};
 document.querySelectorAll('.bookForm').forEach(fm=>fm.onsubmit=e=>{e.preventDefault();const f=new FormData(fm);
 send('wa',`SOLÉA ${fm.dataset.zone} booking request`,[...f].map(([k,v])=>`${k[0].toUpperCase()+k.slice(1)}: ${v}`).join('\n'));toast('Opening your booking request…')});
 // reviews
@@ -44,3 +48,25 @@ $('#revList').innerHTML=[...mine.map(r=>[...r,1]),...SAMPLES.map(r=>[...r,0])].m
 drawRevs();
 $('#revForm').onsubmit=e=>{e.preventDefault();const f=new FormData(e.target);const mine=JSON.parse(localStorage.getItem('soleaReviews')||'[]');
 mine.unshift([f.get('name'),f.get('text'),rating]);localStorage.setItem('soleaReviews',JSON.stringify(mine));e.target.reset();rating=5;drawStars();drawRevs();toast('Thanks! Your review is saved.')};
+
+// payments
+const PAY=[["📱","BML MobilePay / BML transfer","Transfer after we confirm your order","Transfer"],["🏦","MIB Faisa / MIB transfer","Transfer after we confirm your order","Transfer"],["💳","Visa · Mastercard · Amex","Card at the counter or on delivery (where a card machine is available)","In store"],["📲","Apple Pay / Google Pay","Tap to pay contactless at the counter","In store"],["▦","QR pay at the counter","Scan our bank QR code when you pay in store","In store"],["💵","Cash","Cash on pickup or on delivery","Pickup / delivery"]];
+$('#payGrid').innerHTML=PAY.map(([i,n,d,t])=>`<div class="paycard reveal"><div class="ic">${i}</div><div><h3>${n}</h3><p class="note">${d}</p><small>${t}</small></div></div>`).join('');
+document.querySelectorAll('.paySel').forEach(s=>s.innerHTML=PAY.map(p=>`<option>${p[1]}</option>`).join(''));
+// themes
+const THEMES={blossom:["Cherry Blossom","Blush, cream and rose under the blossom tree. 7th-floor city terrace.",["#F6D6DC","#FFF8F4","#E8A0B4","#C9A27E"],"city"],
+sky:["Sky City","Blue-hour Malé from the 7th floor, cool blues with a blush glow.",["#1f2a44","#5b7bd5","#dfe7f5","#e8a0b4"],"city"],
+lagoon:["Lagoon Beach","For a seaside location: turquoise lagoon, sand and coral.",["#2aa79b","#d5f1ee","#fffaf2","#f08a6c"],"beach"],
+seoul:["Seoul Night","Dark mode with neon pink and cyan, K-street-at-night energy.",["#0f0c1d","#ff4fa3","#7cf3ff","#211b3b"],"city"],
+matcha:["Matcha Cream","Calm matcha green, cream and warm wood.",["#7a9a52","#e3ecd3","#fbf8ef","#b89470"],"city"]};
+function applyTheme(k){if(!THEMES[k])k='blossom';document.documentElement.dataset.theme=k;localStorage.setItem('soleaTheme',k);
+const beach=THEMES[k][3]=='beach';
+document.querySelectorAll('.terraceImg').forEach(i=>{i.src=beach?'img/terrace_beach.jpg':'img/terrace_city.jpg';i.alt=beach?'Beach terrace':'Sky Terrace on the 7th floor'});
+document.querySelectorAll('.terraceName').forEach(e=>e.textContent=beach?'Beach Terrace':'Sky Terrace (7th floor)');
+document.querySelectorAll('.terraceTxt').forEach(e=>e.textContent=beach?'Shaded seaside seating with fans and misting, steps from the lagoon. (Alternate look in case SOLÉA moves by the sea.)':'Shaded balcony seating with fans and misting, and a view over the Malé skyline and lagoon.');
+document.querySelectorAll('.tcard').forEach(c=>c.classList.toggle('on',c.dataset.k==k))}
+$('#themeGrid').innerHTML=Object.entries(THEMES).map(([k,[n,d,sw,t]])=>`<button class="tcard" data-k="${k}"><div class="tprev" style="background-image:linear-gradient(${sw[0]}99,${sw[1]}99),url(img/${t=='beach'?'terrace_beach':'terrace_city'}.jpg)"><div class="mini" style="background:${sw[1]};color:${k=='seoul'?'#f3ecff':sw[0]=='#F6D6DC'?'#4a3b3f':sw[0]}">SOLÉA</div><div class="sw">${sw.map(c=>`<i style="background:${c}"></i>`).join('')}</div></div><div class="tb"><h3>${n}${k=='blossom'?' · default':''}</h3><p>${d}</p></div></button>`).join('');
+$('#themeGrid').onclick=e=>{const c=e.target.closest('.tcard');if(c){applyTheme(c.dataset.k);toast(THEMES[c.dataset.k][0]+' theme on')}};
+applyTheme(localStorage.getItem('soleaTheme')||'blossom');
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+route();

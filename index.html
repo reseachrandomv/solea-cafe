@@ -2,58 +2,61 @@
 <title>SOLÉA — Korean-inspired Café · Malé, Maldives</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css"></head><body>
-<nav id="nav"><a href="#top" class="logo">SOLÉA<span>솔레아</span></a>
-<button id="burger" aria-label="Menu">☰</button>
-<ul id="links"><li><a href="#zones">Zones</a></li><li><a href="#menu">Menu</a></li><li><a href="#order">Order</a></li><li><a href="#book">Book</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#events">Events</a></li><li><a href="#visit">Visit</a></li></ul></nav>
+<nav id="nav"><a href="#home" class="logo">SOLÉA<span>솔레아</span></a>
+</nav>
+<div id="tabbar"><a href="#home" data-tab="home">Home</a><a href="#zones" data-tab="zones">Zones</a><a href="#menu" data-tab="menu">Menu</a><a href="#order" data-tab="order">Order</a><a href="#book" data-tab="book">Book</a><a href="#pay" data-tab="pay">Pay</a><a href="#reviews" data-tab="reviews">Reviews</a><a href="#events" data-tab="events">Events &amp; Membership</a><a href="#themes" data-tab="themes">Themes</a><a href="#visit" data-tab="visit">Visit</a></div>
 
-<header id="top" class="hero"><div id="petals"></div>
+<div class="page" id="home"><header class="hero"><div id="petals"></div>
 <div class="hero-in"><p class="eyebrow">Malé · Maldives</p><h1>SOLÉA</h1><p class="tag">A welcoming Korean-inspired café under a cherry-blossom tree.<br>Ramyeon, kimbap, bingsu, Maldivian fusion &amp; great coffee.</p>
 <div class="btns"><a class="btn" href="#order">Order online</a><a class="btn ghost" href="#book">Book a space</a></div></div>
-<a href="#zones" class="scroll">↓</a></header>
+<a href="#zones" class="scroll">Explore the zones →</a></header>
 
-<section id="about" class="wrap reveal"><div class="arch"><img src="img/hall.jpg" alt="SOLÉA blossom café hall"></div>
+<section id="about-sec" class="wrap reveal"><div class="arch"><img src="img/hall.jpg" alt="SOLÉA blossom café hall"></div>
 <div><p class="eyebrow">Welcome</p><h2>Come in, slow down, stay a while</h2><p>Blush walls, light oak tables, arched mirrors and warm light, all gathered around our cherry-blossom tree. Grab a snack at the K-store corner, study in a quiet pod, play with friends, or catch the sea breeze on the terrace.</p>
-<div class="stats"><div><b>5</b><span>zones</span></div><div><b>30+</b><span>menu items</span></div><div><b>7</b><span>days a week</span></div></div></div></section>
+<p>Up on the 7th floor in Malé city, with lift access and a wide view over the rooftops and the lagoon.</p><div class="stats"><div><b>5</b><span>zones</span></div><div><b>30+</b><span>menu items</span></div><div><b>7</b><span>days a week</span></div></div></div></section>
 
-<section id="zones"><div class="head reveal"><p class="eyebrow">Explore the space</p><h2>Five zones, one welcoming café</h2></div>
+</div>
+<section id="zones" class="page"><div class="head reveal"><p class="eyebrow">Explore the space</p><h2>Five zones, one welcoming café</h2></div>
 <div class="zones">
 <article class="zone reveal"><img src="img/store.jpg" alt="Korean convenience-store corner"><div><span class="num">01 · Entrance</span><h3>K-Convenience Corner</h3><p>Ramyeon station with hot-water machines, Korean snacks and drinks, grab-and-go kimbap.</p></div></article>
 <article class="zone reveal"><img src="img/hall.jpg" alt="Main blossom café hall"><div><span class="num">02 · Heart</span><h3>Blossom Café Hall</h3><p>Round oak tables around the cherry-blossom tree, with blossoms hanging from the ceiling.</p></div></article>
 <article class="zone reveal"><img src="img/study.jpg" alt="Quiet study hall"><div><span class="num">03 · Bookable</span><h3>Quiet Study Hall</h3><p>Private pods with lamps and sockets. Hourly passes and student plans.</p></div></article>
 <article class="zone reveal"><img src="img/game.jpg" alt="Game lounge"><div><span class="num">04 · Bookable</span><h3>Game Lounge</h3><p>Board-game library, console sofas and karaoke-style private rooms.</p></div></article>
-<article class="zone reveal"><img src="img/terrace.jpg" alt="Garden terrace"><div><span class="num">05 · Indoor-outdoor</span><h3>Garden Terrace</h3><p>Shaded seating with fans and misting to beat the Malé heat.</p></div></article>
+<article class="zone reveal"><img class="terraceImg" src="img/terrace_city.jpg" alt="Sky Terrace on the 7th floor"><div><span class="num">05 · Indoor-outdoor · 7th floor</span><h3 class="terraceName">Sky Terrace (7th floor)</h3><p class="terraceTxt">Shaded balcony seating with fans and misting, and a view over the Malé skyline and lagoon.</p></div></article>
 </div>
-<div class="flow reveal"><p class="eyebrow">Customer flow</p><div class="plan"><div class="p1">01 K-Store<br><small>entrance</small></div><div class="p2">02 Blossom Hall 🌸<br><small>order counter</small></div><div class="p3">03 Study Hall</div><div class="p4">04 Game Lounge</div><div class="p5">05 Garden Terrace ☀</div></div><p class="note">Enter through the K-Store → order in the Blossom Hall → settle into the study hall, game lounge or terrace.</p></div></section>
+<div class="flow reveal"><p class="eyebrow">Customer flow</p><div class="plan"><div class="p1">01 K-Store<br><small>entrance</small></div><div class="p2">02 Blossom Hall 🌸<br><small>order counter</small></div><div class="p3">03 Study Hall</div><div class="p4">04 Game Lounge</div><div class="p5">05 <span class="terraceName">Sky Terrace (7th floor)</span> ☀</div></div><p class="note">Take the lift to the 7th floor → enter through the K-Store → order in the Blossom Hall → settle into the study hall, game lounge or terrace.</p></div></section>
 
-<section id="menu" class="tint"><div class="head reveal"><p class="eyebrow">Menu</p><h2>Korean favourites, Maldivian twists</h2><p class="note">Prices in MVR are estimates for this concept.</p></div>
+<section id="menu" class="page tint"><div class="head reveal"><p class="eyebrow">Menu</p><h2>Korean favourites, Maldivian twists</h2><p class="note">Prices in MVR are estimates for this concept.</p></div>
 <div class="tabs reveal" id="tabs"></div><div class="menu-grid" id="menuGrid"></div></section>
 
-<section id="order" class="wrap2 reveal"><div class="head"><p class="eyebrow">Order online</p><h2>Pickup or delivery in Malé</h2><p class="note">Add items from the menu, then send your order request by WhatsApp or email. No card payment online; pay on pickup or delivery.</p></div>
+<section id="order" class="page wrap2 reveal"><div class="head"><p class="eyebrow">Order online</p><h2>Pickup or delivery in Malé</h2><p class="note">Add items from the menu, choose how you’d like to pay, then send your order request by WhatsApp or email. No payment is taken on this website: pay at pickup/delivery or by transfer after we confirm.</p></div>
 <form id="orderForm" class="card"><div id="cart"><p class="note">Your basket is empty. Tap “+ Add” on menu items.</p></div>
 <div class="row"><label><input type="radio" name="type" value="Pickup" checked> Pickup</label><label><input type="radio" name="type" value="Delivery"> Delivery</label></div>
 <input name="name" placeholder="Your name" required><input name="phone" placeholder="Phone number" required>
 <input name="address" placeholder="Delivery address in Malé (for delivery)"><input name="time" type="time" aria-label="Preferred time">
-<textarea name="notes" placeholder="Notes (spice level, allergies…)"></textarea>
+<label class="pl">How would you like to pay?</label><select name="pay" class="paySel"></select><textarea name="notes" placeholder="Notes (spice level, allergies…)"></textarea>
 <div class="btns"><button class="btn" data-via="wa">Send via WhatsApp</button><button class="btn ghost" data-via="mail">Send via email</button></div></form></section>
 
-<section id="book" class="tint"><div class="head reveal"><p class="eyebrow">Book a space</p><h2>Study hall &amp; game lounge</h2></div>
+<section id="book" class="page tint"><div class="head reveal"><p class="eyebrow">Book a space</p><h2>Study hall &amp; game lounge</h2></div>
 <div class="two">
 <form class="card reveal bookForm" data-zone="Study Hall"><h3>📚 Study Hall</h3><p class="note">Pod pass ~MVR 40/hr · Student day pass ~MVR 150 (estimates)</p>
 <input name="name" placeholder="Name" required><input name="phone" placeholder="Phone" required><input name="date" type="date" required>
 <div class="row"><input name="time" type="time" required><select name="hours"><option>1 hour</option><option>2 hours</option><option>3 hours</option><option>Day pass</option></select></div>
-<select name="seats"><option>1 person</option><option>2 people</option><option>Group table (4)</option></select><button class="btn">Request booking</button></form>
+<select name="seats"><option>1 person</option><option>2 people</option><option>Group table (4)</option></select><label class="pl">How would you like to pay?</label><select name="pay" class="paySel"></select><p class="note">Pay at the counter or by transfer after we confirm.</p><button class="btn">Request booking</button></form>
 <form class="card reveal bookForm" data-zone="Game Lounge"><h3>🎮 Game Lounge</h3><p class="note">Board games ~MVR 50/person · Console/karaoke room ~MVR 250/hr (estimates)</p>
 <input name="name" placeholder="Name" required><input name="phone" placeholder="Phone" required><input name="date" type="date" required>
 <div class="row"><input name="time" type="time" required><select name="hours"><option>1 hour</option><option>2 hours</option><option>3 hours</option></select></div>
-<select name="space"><option>Board-game table</option><option>Console sofa</option><option>Karaoke private room</option></select><input name="people" type="number" min="1" max="12" placeholder="Number of people"><button class="btn">Request booking</button></form>
+<select name="space"><option>Board-game table</option><option>Console sofa</option><option>Karaoke private room</option></select><input name="people" type="number" min="1" max="12" placeholder="Number of people"><label class="pl">How would you like to pay?</label><select name="pay" class="paySel"></select><p class="note">Pay at the counter or by transfer after we confirm.</p><button class="btn">Request booking</button></form>
 </div></section>
 
-<section id="reviews" class="wrap2"><div class="head reveal"><p class="eyebrow">Reviews</p><h2>What guests say</h2><p class="note">SOLÉA is a concept, so the starter reviews below are labelled samples. Reviews you add are saved in your browser only.</p></div>
+<section id="pay" class="page wrap2"><div class="head reveal"><p class="eyebrow">Ways to pay</p><h2>Pay the way you like</h2><p class="note">No payment is taken on this website. Pay at pickup/delivery or by transfer after we confirm your order or booking.</p></div>
+<div class="paygrid" id="payGrid"></div></section>
+<section id="reviews" class="page wrap2"><div class="head reveal"><p class="eyebrow">Reviews</p><h2>What guests say</h2><p class="note">SOLÉA is a concept, so the starter reviews below are labelled samples. Reviews you add are saved in your browser only.</p></div>
 <div id="revList" class="revs"></div>
 <form id="revForm" class="card reveal"><h3>Leave a review</h3><input name="name" placeholder="Your name" required>
 <div class="stars" id="stars">★★★★★</div><textarea name="text" placeholder="Tell us about your visit" required></textarea><button class="btn">Post review</button></form></section>
 
-<section id="events" class="tint"><div class="head reveal"><p class="eyebrow">Events &amp; membership</p><h2>Something on every week</h2></div>
+<section id="events" class="page tint"><div class="head reveal"><p class="eyebrow">Events &amp; membership</p><h2>Something on every week</h2></div>
 <div class="three">
 <div class="card reveal"><h3>🎤 K-Pop Karaoke Night</h3><p>Fridays from 8pm in the game lounge.</p></div>
 <div class="card reveal"><h3>🎲 Board-Game Sundays</h3><p>Meet new people, learn new games.</p></div>
@@ -64,7 +67,8 @@
 <div class="card reveal"><h3>Student Pass</h3><b class="price">~MVR 499/mo</b><p>Unlimited study-hall weekday hours + 1 free drink daily.</p></div></div>
 <p class="note c">Membership prices are estimates for this concept.</p></section>
 
-<section id="visit" class="wrap reveal"><div><p class="eyebrow">Visit us</p><h2>Find SOLÉA in Malé</h2><p>📍 Malé, Maldives (exact address coming soon)</p><p>💬 WhatsApp: <a href="https://wa.me/9609424572">+960 9424572</a> (Fathimath Malaak Jaufar)<br>✉️ <a href="mailto:malaak.office@gmail.com">malaak.office@gmail.com</a></p>
+<section id="themes" class="page"><div class="head reveal"><p class="eyebrow">Themes</p><h2>Try a different look</h2><p class="note">Tap a card to preview it instantly. Your choice is remembered on this device.</p></div><div class="themegrid" id="themeGrid"></div></section>
+<section id="visit" class="page wrap reveal"><div><p class="eyebrow">Visit us</p><h2>Find SOLÉA in Malé</h2><p>📍 7th Floor, Malé (exact building coming soon)</p><p>🛗 Lift access from the ground floor · 🌆 City and lagoon view from the Sky Terrace</p><p>💬 WhatsApp: <a href="https://wa.me/9609424572">+960 9424572</a> (Fathimath Malaak Jaufar)<br>✉️ <a href="mailto:malaak.office@gmail.com">malaak.office@gmail.com</a></p>
 <table class="hours"><tr><td>Sat – Thu</td><td>7:00 am – 11:00 pm</td></tr><tr><td>Friday</td><td>2:00 pm – 12:00 am</td></tr><tr><td>Study hall</td><td>Until 1:00 am in exam season</td></tr></table><p class="note">Hours are planned, not final.</p></div>
 <iframe title="Map of Malé" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=73.495%2C4.168%2C73.525%2C4.183&layer=mapnik"></iframe></section>
 
