@@ -34,9 +34,9 @@ $('#orderForm').onsubmit=e=>{e.preventDefault();const f=new FormData(e.target),v
 const items=Object.keys(cart).filter(k=>cart[k].q).map(k=>`- ${cart[k].q} x ${k} (MVR ${cart[k].q*cart[k].p})`).join('\n');
 if(!items)return toast('Add something from the menu first');
 if(f.get('type')=='Delivery'&&!f.get('address'))return toast('Please add a delivery address');
-send(via,`SOLÉA ${f.get('type')} order request`,`${items}\nEstimated total: MVR ${tot}\n\nName: ${f.get('name')}\nPhone: ${f.get('phone')}\n${f.get('type')=='Delivery'?'Address: '+f.get('address')+'\n':''}Time: ${f.get('time')||'ASAP'}\nNotes: ${f.get('notes')||'-'}\nPay method: ${f.get('pay')}\n(Pay at pickup/delivery or by transfer after you confirm)`)};
+send(via,`Youth Hub Café ${f.get('type')} order request`,`${items}\nEstimated total: MVR ${tot}\n\nName: ${f.get('name')}\nPhone: ${f.get('phone')}\n${f.get('type')=='Delivery'?'Address: '+f.get('address')+'\n':''}Time: ${f.get('time')||'ASAP'}\nNotes: ${f.get('notes')||'-'}\nPay method: ${f.get('pay')}\n(Pay at pickup/delivery or by transfer after you confirm)`)};
 document.querySelectorAll('.bookForm').forEach(fm=>fm.onsubmit=e=>{e.preventDefault();const f=new FormData(fm);
-send('wa',`SOLÉA ${fm.dataset.zone} booking request`,[...f].map(([k,v])=>`${k[0].toUpperCase()+k.slice(1)}: ${v}`).join('\n'));toast('Opening your booking request…')});
+send('wa',`Youth Hub Café ${fm.dataset.zone} booking request`,[...f].map(([k,v])=>`${k[0].toUpperCase()+k.slice(1)}: ${v}`).join('\n'));toast('Opening your booking request…')});
 // reviews
 const SAMPLES=[["Aishath","The blossom tree is so pretty and the tteokbokki is perfect!",5],["Ibrahim","Study pods are quiet and the sockets work at every seat.",5],["Mariyam","Karaoke room was so fun for my birthday. Tuna kimbap 10/10.",4]];
 let rating=5;const st=$('#stars');
@@ -63,9 +63,9 @@ function applyTheme(k){if(!THEMES[k])k='blossom';document.documentElement.datase
 const beach=THEMES[k][3]=='beach';
 document.querySelectorAll('.terraceImg').forEach(i=>{i.src=beach?'img/terrace_beach.jpg':'img/terrace_city.jpg';i.alt=beach?'Beach terrace':'Sky Terrace on the 7th floor'});
 document.querySelectorAll('.terraceName').forEach(e=>e.textContent=beach?'Beach Terrace':'Sky Terrace (7th floor)');
-document.querySelectorAll('.terraceTxt').forEach(e=>e.textContent=beach?'Shaded seaside seating with fans and misting, steps from the lagoon. (Alternate look in case SOLÉA moves by the sea.)':'Shaded balcony seating with fans and misting, and a view over the Malé skyline and lagoon.');
+document.querySelectorAll('.terraceTxt').forEach(e=>e.textContent=beach?'Shaded seaside seating with fans and misting, steps from the lagoon. (Alternate look in case Youth Hub Café moves by the sea.)':'Shaded balcony seating with fans and misting, and a view over the Malé skyline and lagoon.');
 document.querySelectorAll('.tcard').forEach(c=>c.classList.toggle('on',c.dataset.k==k))}
-$('#themeGrid').innerHTML=Object.entries(THEMES).map(([k,[n,d,sw,t]])=>`<button class="tcard" data-k="${k}"><div class="tprev" style="background-image:linear-gradient(${sw[0]}99,${sw[1]}99),url(img/${t=='beach'?'terrace_beach':'terrace_city'}.jpg)"><div class="mini" style="background:${sw[1]};color:${k=='seoul'?'#f3ecff':sw[0]=='#F6D6DC'?'#4a3b3f':sw[0]}">SOLÉA</div><div class="sw">${sw.map(c=>`<i style="background:${c}"></i>`).join('')}</div></div><div class="tb"><h3>${n}${k=='blossom'?' · default':''}</h3><p>${d}</p></div></button>`).join('');
+$('#themeGrid').innerHTML=Object.entries(THEMES).map(([k,[n,d,sw,t]])=>`<button class="tcard" data-k="${k}"><div class="tprev" style="background-image:linear-gradient(${sw[0]}99,${sw[1]}99),url(img/${t=='beach'?'terrace_beach':'terrace_city'}.jpg)"><div class="mini" style="background:${sw[1]};color:${k=='seoul'?'#f3ecff':sw[0]=='#F6D6DC'?'#4a3b3f':sw[0]}">Youth Hub Café</div><div class="sw">${sw.map(c=>`<i style="background:${c}"></i>`).join('')}</div></div><div class="tb"><h3>${n}${k=='blossom'?' · default':''}</h3><p>${d}</p></div></button>`).join('');
 $('#themeGrid').onclick=e=>{const c=e.target.closest('.tcard');if(c){applyTheme(c.dataset.k);toast(THEMES[c.dataset.k][0]+' theme on')}};
 applyTheme(localStorage.getItem('soleaTheme')||'blossom');
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));

@@ -20,7 +20,7 @@ nav.solid{background:color-mix(in srgb,var(--cream) 92%,transparent);backdrop-fi
 .hero{min-height:100svh;display:grid;place-items:center;text-align:center;position:relative;overflow:hidden;
 background:linear-gradient(color-mix(in srgb,var(--cream) 80%,transparent),color-mix(in srgb,var(--blush) 80%,transparent)),url(img/hall.jpg) center/cover}
 .hero-in{position:relative;z-index:2;padding:6rem 1.2rem 3rem;animation:up 1.2s ease both}
-.hero h1{font-size:clamp(4rem,16vw,9rem);letter-spacing:.05em;color:var(--ink);line-height:1}
+.hero h1{font-size:clamp(3rem,12vw,7rem);letter-spacing:.02em;color:var(--ink);line-height:1}
 .tag{font-size:1.15rem;max-width:34rem;margin:1rem auto 2rem}
 .btns{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
 .btn{background:var(--rose);color:#fff;border:0;padding:.85rem 1.6rem;border-radius:99px;font:700 1rem Nunito;text-decoration:none;cursor:pointer;transition:.25s;box-shadow:0 6px 18px #e8a0b466}
